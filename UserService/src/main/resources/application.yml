@@ -1,0 +1,33 @@
+server:
+  port: 9002
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/user
+    username: root
+    password: pass
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+  application:
+    name: user-service
+  zipkin:
+    enabled: true
+    service.name: user-service
+    sender.type: web
+    base-url: http://127.0.0.1:9411/
+    locator:
+      discovery:
+        enabled: true
+  sleuth:
+      enabled: true
+      sampler:
+        percentage: 1.0
+        probability: 1.0
+
+
